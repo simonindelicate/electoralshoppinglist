@@ -568,7 +568,7 @@ function mapParty(rawName) {
   return 'Other';
 }
 
-// Pull all non-cancelled candidates out of EC response, grouped by ballot
+// Pull all non-cancelled ballots out of EC response, grouped by ballot
 function extractBallots(data) {
   if (!data || !data.dates) return [];
   const ballots = [];
@@ -580,11 +580,13 @@ function extractBallots(data) {
         partyRaw: c.party.party_name,
         partyKey: mapParty(c.party.party_name),
       }));
-      if (cands.length === 0) return;
       ballots.push({
         title: ballot.ballot_title,
         role: ballot.elected_role,
         date: ballot.poll_open_date,
+        seatsContested: ballot.seats_contested,
+        requiresVoterId: ballot.requires_voter_id,
+        candidatesVerified: ballot.candidates_verified,
         candidates: cands,
       });
     });
@@ -651,7 +653,7 @@ function renderResult(scores, normed, winner, ballots) {
   document.getElementById('verdictBlock').innerHTML = `
     <div class="verdict-label">YOUR RECOMMENDED VOTE</div>
     <div class="verdict-party" style="color:${colour}">${winner}</div>
-    <div class="verdict-why">${ballots.length > 0 ? 'Matched against actual candidates standing in your area.' : 'Based on aisle scores alone — no local ballot data available.'}</div>
+    <div class="verdict-why">${ballots.some(b => b.candidates.length > 0) ? 'Matched against actual candidates standing in your area.' : ballots.length > 0 ? 'Based on aisle scores — candidate lists not yet published for your area.' : 'Based on aisle scores alone — no local ballot data available.'}</div>
   `;
 
   // Analysis
@@ -668,16 +670,23 @@ function renderResult(scores, normed, winner, ballots) {
       ${ballots.map(b => `
         <div class="ballot-group">
           <div class="ballot-title-label">${b.title} · ${new Date(b.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
-          ${b.candidates.map(c => {
-            const isWinner = c.partyKey === winner;
-            return `<div class="candidate-row">
-              <div>
-                <span class="candidate-name${isWinner ? ' candidate-highlight' : ''}">${c.name}${isWinner ? ' ←' : ''}</span>
-                <div style="font-size:11px;color:#999;">${b.role}</div>
-              </div>
-              <span class="candidate-party-pill" style="color:${PARTY_COLOURS[c.partyKey]||'#888'};border-color:${PARTY_COLOURS[c.partyKey]||'#888'}">${c.partyRaw}</span>
-            </div>`;
-          }).join('')}
+          <div style="font-size:11px;color:#aaa;margin-bottom:6px;">
+            ${b.role} · ${b.seatsContested} seat${b.seatsContested !== 1 ? 's' : ''}
+            ${b.requiresVoterId ? ' · <span style="color:#c00;font-weight:700;">Photo ID required</span>' : ''}
+          </div>
+          ${b.candidates.length > 0
+            ? b.candidates.map(c => {
+                const isWinner = c.partyKey === winner;
+                return `<div class="candidate-row">
+                  <div>
+                    <span class="candidate-name${isWinner ? ' candidate-highlight' : ''}">${c.name}${isWinner ? ' ←' : ''}</span>
+                    <div style="font-size:11px;color:#999;">${b.role}</div>
+                  </div>
+                  <span class="candidate-party-pill" style="color:${PARTY_COLOURS[c.partyKey]||'#888'};border-color:${PARTY_COLOURS[c.partyKey]||'#888'}">${c.partyRaw}</span>
+                </div>`;
+              }).join('')
+            : `<p style="font-size:12px;color:#999;padding:6px 0;margin:0;">Candidate list not yet published. Check <a href="https://whocanivotefor.co.uk" target="_blank" style="color:var(--red)">whocanivotefor.co.uk</a> nearer the election.</p>`
+          }
         </div>
       `).join('')}
     `;
