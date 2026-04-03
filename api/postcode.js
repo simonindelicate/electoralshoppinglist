@@ -11,11 +11,14 @@ export default async function handler(req, res) {
   }
 
   const token = process.env.EC_API_KEY || '';
-  const url = `https://api.electoralcommission.org.uk/api/v1/postcode/${postcode}/?auth_token=${token}`;
+  const url = `https://api.electoralcommission.org.uk/api/v1/postcode/${postcode}/?token=${token}`;
 
   try {
     const upstream = await fetch(url, {
-      headers: { 'Accept': 'application/json' },
+      headers: {
+        'Accept': 'application/json',
+        ...(token && { 'Authorization': `Token ${token}` }),
+      },
     });
 
     if (!upstream.ok) {
