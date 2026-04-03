@@ -272,50 +272,74 @@ const AISLES = [
   {
     id: 'world', name: 'World Foods',
     desc: 'Miso, harissa, rice wine, twelve types of soy sauce',
-    scores: { Labour:2, 'Liberal Democrats':2, Green:3, Conservative:-2, 'Reform UK':-3, SNP:1, 'Plaid Cymru':1, Other:1 },
+    scores: { Labour: 2, 'Liberal Democrats': 2, Green: 3, Conservative: -2, 'Reform UK': -4, 'Regional Nationalists': 1, Other: 1 },
     quip: 'A World Foods loyalist clearly believes in the free movement of ingredients, if not necessarily of people.',
   },
   {
     id: 'confec', name: 'Confectionery',
     desc: 'Pick & mix, chocolate bars, the big tubs at Christmas',
-    scores: { Labour:1, 'Liberal Democrats':0, Green:-1, Conservative:1, 'Reform UK':2, SNP:0, 'Plaid Cymru':0, Other:0 },
+    scores: { Labour: 0, 'Liberal Democrats': 0, Green: -1, Conservative: 1, 'Reform UK': 3, 'Regional Nationalists': 0, Other: 0 },
     quip: 'Strong confectionery preference suggests comfort with short-term pleasure over long-term planning. Politically speaking.',
   },
   {
     id: 'teas', name: 'Teas & Hot Drinks',
     desc: 'Yorkshire Tea, instant coffee, Ovaltine, rooibos',
-    scores: { Labour:0, 'Liberal Democrats':1, Green:1, Conservative:2, 'Reform UK':1, SNP:1, 'Plaid Cymru':2, Other:1 },
+    scores: { Labour: 2, 'Liberal Democrats': 1, Green: 1, Conservative: 2, 'Reform UK': 2, 'Regional Nationalists': 2, Other: 1 },
     quip: 'Strong tea drinkers are the bedrock of British democracy. Which is both reassuring and slightly terrifying.',
   },
   {
     id: 'booze', name: 'Wines & Spirits',
     desc: 'Gins, wines, craft beers, that one bottle of advocaat',
-    scores: { Labour:1, 'Liberal Democrats':2, Green:0, Conservative:2, 'Reform UK':-1, SNP:1, 'Plaid Cymru':0, Other:0 },
+    scores: { Labour: 0, 'Liberal Democrats': 2, Green: 0, Conservative: 4, 'Reform UK': -1, 'Regional Nationalists': 1, Other: 0 },
     quip: 'Wine aisle loyalty speaks to a belief in European trade relationships and a preference for conducting politics over dinner.',
   },
   {
     id: 'health', name: 'Free-From & Health',
     desc: 'Oat milk, protein bars, seeds, things in compostable bags',
-    scores: { Labour:0, 'Liberal Democrats':2, Green:3, Conservative:-1, 'Reform UK':-3, SNP:1, 'Plaid Cymru':1, Other:1 },
+    scores: { Labour: 0, 'Liberal Democrats': 2, Green: 4, Conservative: -1, 'Reform UK': -4, 'Regional Nationalists': 1, Other: 1 },
     quip: 'Voluntary oat milk consumption is a series of political decisions, whether the consumer realises it or not.',
   },
   {
     id: 'ready', name: 'Ready Meals',
-    desc: 'Meal deals, microwave curries, M&S dine-in for two',
-    scores: { Labour:2, 'Liberal Democrats':-1, Green:-2, Conservative:0, 'Reform UK':1, SNP:1, 'Plaid Cymru':0, Other:1 },
+    desc: 'Meal deals, microwave curries, M and S dine-in for two',
+    scores: { Labour: 2, 'Liberal Democrats': -1, Green: -2, Conservative: 0, 'Reform UK': 2, 'Regional Nationalists': 1, Other: 1 },
     quip: 'Ready meal pragmatism suggests someone who just needs things to work. The political class calls this "working people".',
   },
   {
     id: 'pets', name: 'Pet Food',
     desc: 'Whiskas, Bakers, horse-sized bags of dry kibble',
-    scores: { Labour:1, 'Liberal Democrats':1, Green:2, Conservative:1, 'Reform UK':1, SNP:1, 'Plaid Cymru':1, Other:2 },
+    scores: { Labour: 1, 'Liberal Democrats': 0, Green: 1, Conservative: 4, 'Reform UK': 1, 'Regional Nationalists': 1, Other: 2 },
     quip: 'Pet owners vote. This is well established. Who they vote for remains the subject of vigorous academic debate.',
   },
   {
     id: 'baby', name: 'Baby & Household',
     desc: 'Nappies, washing powder, things in very large containers',
-    scores: { Labour:2, 'Liberal Democrats':1, Green:0, Conservative:1, 'Reform UK':2, SNP:1, 'Plaid Cymru':1, Other:0 },
+    scores: { Labour: 2, 'Liberal Democrats': 1, Green: 0, Conservative: 1, 'Reform UK': 2, 'Regional Nationalists': 1, Other: 0 },
     quip: 'The household aisle voter wants a functioning state: bins collected, schools staffed, prices not insane.',
+  },
+  {
+    id: 'produce', name: 'Fresh Produce',
+    desc: 'Vegetables, herbs, fruit you intend to eat before it liquefies',
+    scores: { Labour: 1, 'Liberal Democrats': 1, Green: 3, Conservative: 0, 'Reform UK': -2, 'Regional Nationalists': 1, Other: 1 },
+    quip: 'Fresh Produce enthusiasts like to imagine they are still connected to something organic, local, and morally superior.',
+  },
+  {
+    id: 'foodtogo', name: 'Food To Go',
+    desc: 'Triangle sandwiches, pasta pots, sausage rolls, smoothies',
+    scores: { Labour: 4, 'Liberal Democrats': 0, Green: -1, Conservative: -1, 'Reform UK': 1, 'Regional Nationalists': 0, Other: 1 },
+    quip: 'Food To Go is the cuisine of commuters, shift workers, and people who do not have time for a philosophy of lunch.',
+  },
+  {
+    id: 'baking', name: 'Home Baking',
+    desc: 'Flour, icing sugar, suet, cake cases, vanilla extract',
+    scores: { Labour: 0, 'Liberal Democrats': 0, Green: -1, Conservative: 4, 'Reform UK': 1, 'Regional Nationalists': 1, Other: 0 },
+    quip: 'Home Baking people are patient, domestic, and faintly suspicious of social decline. This has an electoral expression.',
+  },
+  {
+    id: 'sushi', name: 'Sushi Counter',
+    desc: 'Edamame, spicy tuna, trays of immaculate tiny rectangles',
+    scores: { Labour: 0, 'Liberal Democrats': 2, Green: 5, Conservative: -2, 'Reform UK': -4, 'Regional Nationalists': 0, Other: 1 },
+    quip: 'A strong Sushi Counter preference suggests metropolitan self-fashioning, soft environmental concern, and an ability to expense lunch.',
   },
 ];
 
@@ -325,19 +349,17 @@ const PARTY_COLOURS = {
   'Green': '#00B140',
   'Conservative': '#0087DC',
   'Reform UK': '#12B6CF',
-  'SNP': '#FFF95D',
-  'Plaid Cymru': '#3F8428',
+  'Regional Nationalists': '#6E8B3D',
   'Other': '#888888',
 };
 
 const PARTY_LINES = {
-  'Labour': 'You want a functioning NHS, you remember 2010 with mixed feelings, and you are not yet angry enough to vote for anything weirder.',
+  'Labour': 'You want public services to function, prices to be vaguely survivable, and lunch to be available in a plastic triangle at short notice.',
   'Liberal Democrats': 'You believe in evidence-based policy, cycling infrastructure, and tactical voting, and you have strong feelings about proportional representation.',
-  'Green': 'You have made peace with the fact that your candidate may not win. You are fine with this, because principles.',
-  'Conservative': 'Possibly a property owner. Possibly just comfortable with the status quo. Almost certainly fond of a good cheese.',
+  'Green': 'You have made peace with the fact that your candidate may not win. You are fine with this, because principles, edamame, and compostable packaging.',
+  'Conservative': 'You like order, continuity, pets, drink, baking, and the comforting idea that someone sensible is notionally in charge somewhere.',
   'Reform UK': 'You are very angry about something specific and have decided the answer is a man in a suit from Essex.',
-  'SNP': 'You live in Scotland, you want more of it run from Edinburgh, and you are correct about at least one of those things.',
-  'Plaid Cymru': 'Wales matters, the Welsh language matters, and you are making that point explicitly via your ballot paper.',
+  'Regional Nationalists': 'You would prefer your nation to be run by itself, and feel that London has had quite enough say over the matter already.',
   'Other': 'You defy the usual categories. You are either a very engaged local democrat or someone settling a personal score with the council.',
 };
 
@@ -537,12 +559,59 @@ function computeScores(rankedAisles) {
   const parties = Object.keys(PARTY_COLOURS);
   const scores = {};
   parties.forEach(p => scores[p] = 0);
+
   const n = rankedAisles.length;
+
   rankedAisles.forEach((aisle, idx) => {
-    // Linear position weight: rank 1 = full weight, rank n = 1/n weight
-    const w = (n - idx) / n;
-    parties.forEach(p => { scores[p] += (aisle.scores[p] ?? 0) * w; });
+    const descending = n - idx;
+    const w = Math.pow(descending / n, 2) * 5;
+
+    parties.forEach(p => {
+      scores[p] += (aisle.scores[p] ?? 0) * w;
+    });
+
+    if (idx === 0) {
+      if (aisle.id === 'booze') scores['Conservative'] += 8;
+      if (aisle.id === 'pets') scores['Conservative'] += 8;
+      if (aisle.id === 'baking') scores['Conservative'] += 10;
+      if (aisle.id === 'foodtogo') scores['Labour'] += 10;
+      if (aisle.id === 'sushi') scores['Green'] += 12;
+      if (aisle.id === 'world') {
+        scores['Green'] += 6;
+        scores['Liberal Democrats'] += 4;
+        scores['Labour'] += 3;
+      }
+    }
+
+    if (idx === n - 1) {
+      if (aisle.id === 'world') {
+        scores['Reform UK'] += 18;
+        scores['Green'] -= 10;
+        scores['Liberal Democrats'] -= 8;
+        scores['Labour'] -= 6;
+      }
+      if (aisle.id === 'sushi') {
+        scores['Reform UK'] += 8;
+        scores['Conservative'] += 4;
+        scores['Green'] -= 10;
+      }
+      if (aisle.id === 'foodtogo') {
+        scores['Labour'] -= 8;
+        scores['Conservative'] += 3;
+      }
+      if (aisle.id === 'baking') {
+        scores['Conservative'] -= 8;
+      }
+      if (aisle.id === 'pets') {
+        scores['Conservative'] -= 6;
+      }
+      if (aisle.id === 'booze') {
+        scores['Conservative'] -= 6;
+        scores['Liberal Democrats'] -= 3;
+      }
+    }
   });
+
   return scores;
 }
 
@@ -563,8 +632,8 @@ function mapParty(rawName) {
   if (n.includes('green')) return 'Green';
   if (n.includes('conservative')) return 'Conservative';
   if (n.includes('reform')) return 'Reform UK';
-  if (n.includes('snp') || n.includes('scottish national')) return 'SNP';
-  if (n.includes('plaid')) return 'Plaid Cymru';
+  if (n.includes('snp') || n.includes('scottish national')) return 'Regional Nationalists';
+  if (n.includes('plaid')) return 'Regional Nationalists';
   return 'Other';
 }
 
