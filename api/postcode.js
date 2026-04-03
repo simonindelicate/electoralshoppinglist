@@ -10,7 +10,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'No postcode provided' });
   }
 
-  const url = `https://api.electoralcommission.org.uk/api/v1/postcode/${postcode}/?auth_token=`;
+  const token = process.env.EC_API_KEY || '';
+  const url = `https://api.electoralcommission.org.uk/api/v1/postcode/${postcode}/?auth_token=${token}`;
 
   try {
     const upstream = await fetch(url, {
