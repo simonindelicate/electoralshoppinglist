@@ -51,7 +51,7 @@
     .postcode-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; margin-bottom: 8px; }
     .postcode-section p { font-size: 13px; color: #555; margin-bottom: 24px; line-height: 1.6; }
     .postcode-input-wrap { display: flex; border: 3px solid var(--black); }
-    .postcode-input-wrap input { flex: 1; padding: 16px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.15em; border: none; background: var(--paper); color: var(--ink); outline: none; text-transform: uppercase; }
+    .postcode-input-wrap input { flex: 1; padding: 16px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.15em; border: none; background: var(--paper); color: var(--ink); outline: none; text-transform: uppercase; min-width: 0; }
     .postcode-input-wrap input::placeholder { color: #bbb; }
 
     .address-picker { border: 3px solid var(--black); }
@@ -69,7 +69,16 @@
     .ranking-body { border: 3px solid var(--black); border-top: none; }
     .drag-hint { background: var(--yellow); color: var(--black); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; text-align: center; border-bottom: 2px solid var(--black); font-family: 'Teko', sans-serif; display: none; }
     .aisle-list { list-style: none; }
-    .aisle-item { display: grid; grid-template-columns: 48px 1fr 40px; align-items: center; border-bottom: 2px solid var(--black); background: var(--paper); cursor: grab; user-select: none; transition: background 0.1s; }
+    .aisle-item {
+      display: grid;
+      grid-template-columns: 48px 1fr 40px;
+      align-items: center;
+      border-bottom: 2px solid var(--black);
+      background: var(--paper);
+      cursor: grab;
+      user-select: none;
+      transition: background 0.1s;
+    }
     .aisle-item:last-child { border-bottom: none; }
     .aisle-item:active { cursor: grabbing; }
     .aisle-item.dragging { opacity: 0.35; }
@@ -78,11 +87,38 @@
     .aisle-item:first-child .aisle-rank { color: var(--red); }
     .aisle-item:nth-child(2) .aisle-rank { color: var(--ink); }
     .aisle-item:nth-child(3) .aisle-rank { color: #555; }
-    .aisle-content { padding: 14px 20px; }
+    .aisle-content { padding: 14px 20px; min-width: 0; }
     .aisle-name { font-family: 'Teko', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.1; }
     .aisle-desc { font-size: 11px; color: #777; margin-top: 2px; }
     .aisle-handle { display: flex; flex-direction: column; gap: 3px; padding: 16px 12px; align-items: center; }
     .aisle-handle span { display: block; width: 18px; height: 2px; background: #bbb; }
+
+    .mobile-reorder {
+      display: none;
+      gap: 6px;
+      padding: 10px 12px;
+      border-left: 2px solid var(--black);
+      align-self: stretch;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(0,0,0,0.03);
+    }
+    .mobile-reorder button {
+      width: 36px;
+      height: 30px;
+      border: 2px solid var(--black);
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .mobile-reorder button:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
 
     .btn { display: inline-block; padding: 16px 32px; background: var(--black); color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; border: 3px solid var(--black); cursor: pointer; text-transform: uppercase; transition: background 0.1s, color 0.1s; }
     .btn:hover { background: var(--red); border-color: var(--red); }
@@ -105,7 +141,7 @@
     .receipt-header .store-name { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.1em; color: var(--yellow); }
     .receipt-header .store-sub { font-size: 11px; letter-spacing: 0.2em; color: #999; text-transform: uppercase; }
     .receipt-body { padding: 20px 24px; font-size: 13px; }
-    .receipt-line { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #ccc; }
+    .receipt-line { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px dotted #ccc; }
     .receipt-line:last-child { border: none; }
     .receipt-label { color: #555; }
     .receipt-value { font-weight: 700; text-align: right; }
@@ -114,7 +150,7 @@
     .score-bars { margin-top: 10px; }
     .score-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
     .score-bar-label { width: 130px; flex-shrink: 0; font-family: 'Teko', sans-serif; font-size: 14px; letter-spacing: 0.03em; }
-    .score-bar-track { flex: 1; height: 10px; background: #ddd; border: 1px solid #bbb; }
+    .score-bar-track { flex: 1; height: 10px; background: #ddd; border: 1px solid #bbb; min-width: 0; }
     .score-bar-fill { height: 100%; }
     .score-bar-val { width: 28px; text-align: right; font-size: 11px; color: #666; }
 
@@ -130,7 +166,7 @@
     .candidates-section h3 { font-family: 'Teko', sans-serif; font-size: 18px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
     .ballot-group { margin-bottom: 16px; }
     .ballot-title-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-bottom: 6px; font-family: 'Teko', sans-serif; }
-    .candidate-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px dotted #ddd; font-size: 13px; }
+    .candidate-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px dotted #ddd; font-size: 13px; }
     .candidate-row:last-child { border: none; }
     .candidate-name { font-weight: 700; }
     .candidate-highlight { background: var(--yellow); padding: 0 4px; }
@@ -148,8 +184,51 @@
       .intro-grid { grid-template-columns: 1fr; }
       .intro-text { border-right: none; border-bottom: 3px solid var(--black); }
       .postcode-section { padding: 24px; }
+      .postcode-input-wrap { flex-direction: column; }
       .postcode-input-wrap input { font-size: 22px; }
+      .postcode-input-wrap button {
+        width: 100%;
+        border-left: none !important;
+        border-top: 3px solid var(--black);
+      }
       .app-container { padding: 20px 14px; }
+
+      .drag-hint { display: block; }
+
+      .aisle-item {
+        grid-template-columns: 48px 1fr 60px;
+        cursor: default;
+      }
+      .aisle-item[draggable="true"] {
+        draggable: false;
+      }
+      .aisle-handle {
+        display: none;
+      }
+      .mobile-reorder {
+        display: flex;
+      }
+
+      .candidate-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .candidate-party-pill {
+        white-space: normal;
+      }
+
+      .score-bar-label {
+        width: 92px;
+        font-size: 12px;
+      }
+
+      .receipt-line {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .receipt-value {
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -169,31 +248,29 @@
 
 <main class="app-container">
 
-  <!-- STEP 1 -->
   <div class="step active" id="step1">
     <div class="intro-grid">
       <div class="intro-text">
         <span class="section-label">How it works</span>
         <h2>What Are You Like?</h2>
-        <p>Democracy is hard - everyone asking for your opinion all the time - you don't know about all that - so what do?</p>
-        <p>Well, you know about the Supermarket, don't you - it's where you spend most of your money and time - but which are the Aisles you look forward to browsing, and which fill you with dread and loathing?</p>
-        <p>Just rank your aisle preferences and we'll tell you who to vote for!</p>
+        <p>Democracy is hard - everyone asking for your opinion all the time - you do not know about all that - so what do?</p>
+        <p>Well, you know about the supermarket, do you not - it is where you spend most of your money and time - but which are the aisles you look forward to browsing, and which fill you with dread and loathing?</p>
+        <p>Just rank your aisle preferences and we will tell you who to vote for.</p>
         <div style="margin-top:24px;"><button class="btn" onclick="goTo(2)">BEGIN SHOPPING →</button></div>
       </div>
       <div class="intro-stats">
-        <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">Aisles to rank</div></div>
+        <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Aisles to rank</div></div>
         <div class="stat-item"><div class="stat-number">Live</div><div class="stat-label">Electoral Commission data</div></div>
         <div class="stat-item"><div class="stat-number">1</div><div class="stat-label">Binding political destiny</div></div>
       </div>
     </div>
   </div>
 
-  <!-- STEP 2: POSTCODE -->
   <div class="step" id="step2">
     <div class="postcode-section">
       <span class="section-label">Step 1 of 2</span>
       <h2>Where Do You Shop?</h2>
-      <p>Enter your UK postcode so we can pull your actual local candidates from the Electoral Commission. We don't store this. We barely care about it, honestly.</p>
+      <p>Enter your UK postcode so we can pull your actual local candidates from the Electoral Commission. We do not store this. We barely care about it, honestly.</p>
       <div class="postcode-input-wrap">
         <input type="text" id="postcodeInput" placeholder="e.g. LS1 4AP" maxlength="8" autocomplete="postal-code" />
         <button class="btn" style="border-left:none;" onclick="submitPostcode()">NEXT →</button>
@@ -202,7 +279,6 @@
     </div>
   </div>
 
-  <!-- STEP 2b: ADDRESS PICKER -->
   <div class="step" id="step2b">
     <div class="address-picker">
       <div class="address-picker-header">
@@ -213,13 +289,12 @@
     </div>
   </div>
 
-  <!-- STEP 3: RANKING -->
   <div class="step" id="step3">
     <div class="ranking-header">
       <h2>RANK YOUR AISLES</h2>
-      <p>Drag from top (most beloved) to bottom (where nightmares live) · Step 2 of 2</p>
+      <p>Desktop: drag to reorder. Mobile: use the arrow buttons. · Step 2 of 2</p>
     </div>
-    <div class="drag-hint" id="touchHint">☰ HOLD AND DRAG EACH ROW TO REORDER</div>
+    <div class="drag-hint" id="touchHint">USE THE ARROWS TO MOVE EACH AISLE UP OR DOWN</div>
     <div class="ranking-body">
       <ul class="aisle-list" id="aisleList"></ul>
     </div>
@@ -229,7 +304,6 @@
     </div>
   </div>
 
-  <!-- STEP 4: LOADING -->
   <div class="step" id="step4">
     <div class="loading-screen">
       <div class="receipt-printing">PROCESSING YOUR TROLLEY<span id="ldots">...</span></div>
@@ -238,7 +312,6 @@
     </div>
   </div>
 
-  <!-- STEP 5: RESULT -->
   <div class="step" id="step5">
     <div class="result-receipt">
       <div class="receipt-header">
@@ -264,10 +337,6 @@
 <footer>AISLE &amp; BALLOT · NOT AFFILIATED WITH ANY PARTY, SUPERMARKET, OR DEITY · FOR ENTERTAINMENT ONLY</footer>
 
 <script>
-// ─── AISLE DATA + PARTY AFFINITY MATRIX ────────────────────────────────────
-// Scores: -3 (strong negative) to +3 (strong positive)
-// Position-weighted at scoring time so top-ranked aisles count more.
-
 const AISLES = [
   {
     id: 'world', name: 'World Foods',
@@ -363,26 +432,37 @@ const PARTY_LINES = {
   'Other': 'You defy the usual categories. You are either a very engaged local democrat or someone settling a personal score with the council.',
 };
 
-// ─── STATE ─────────────────────────────────────────────────────────────────
 let ranking = [...AISLES];
 let postcode = '';
 let ecData = null;
+let dragSrc = null;
 
-// ─── INIT ──────────────────────────────────────────────────────────────────
+function isMobileLayout() {
+  return window.matchMedia('(max-width: 600px)').matches;
+}
+
 (function init() {
   const wrap = document.getElementById('barcode');
   [1,2,1,1,3,1,2,1,1,2,3,1,1,2,1,1,2,1,3,2,1,1,2,1].forEach(w => {
     const s = document.createElement('span');
-    s.style.width = (w*3) + 'px';
+    s.style.width = (w * 3) + 'px';
     wrap.appendChild(s);
   });
+
   document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-GB', {
-    weekday:'long', day:'numeric', month:'long', year:'numeric'
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
   }).toUpperCase();
-  document.getElementById('postcodeInput').addEventListener('keydown', e => { if (e.key === 'Enter') submitPostcode(); });
+
+  document.getElementById('postcodeInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') submitPostcode();
+  });
+
+  window.addEventListener('resize', () => {
+    const step3 = document.getElementById('step3');
+    if (step3.classList.contains('active')) renderAisles();
+  });
 })();
 
-// ─── NAV ───────────────────────────────────────────────────────────────────
 function goTo(n) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById('step' + n).classList.add('active');
@@ -398,7 +478,6 @@ function restart() {
   goTo(1);
 }
 
-// ─── POSTCODE + EC API ─────────────────────────────────────────────────────
 function isValidPostcode(pc) {
   return /^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$/i.test(pc.trim());
 }
@@ -406,7 +485,10 @@ function isValidPostcode(pc) {
 async function submitPostcode() {
   const val = document.getElementById('postcodeInput').value.trim().toUpperCase();
   const err = document.getElementById('postcodeError');
-  if (!isValidPostcode(val)) { err.classList.add('visible'); return; }
+  if (!isValidPostcode(val)) {
+    err.classList.add('visible');
+    return;
+  }
   err.classList.remove('visible');
   postcode = val;
 
@@ -451,10 +533,11 @@ function renderAddressPicker(addresses) {
       document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
       document.getElementById('step4').classList.add('active');
       try {
-        // addr.slug is the uprn-based address identifier for the /address/ endpoint
         const resp = await fetch('/api/postcode?postcode=' + encodeURIComponent(addr.slug));
         if (resp.ok) ecData = await resp.json();
-      } catch(e) { ecData = null; }
+      } catch (e) {
+        ecData = null;
+      }
       stopTicker();
       goTo(3);
     };
@@ -463,7 +546,6 @@ function renderAddressPicker(addresses) {
   });
 }
 
-// ─── LOADING TICKER ────────────────────────────────────────────────────────
 const TICKER_MSGS = [
   'CONSULTING THE ELECTORAL REGISTER',
   'WEIGHING YOUR TROLLEY CONTENTS',
@@ -472,89 +554,106 @@ const TICKER_MSGS = [
   'COMPUTING AISLE AFFINITY SCORES',
   'ALMOST DONE. PROBABLY.',
 ];
-let tickerT = null, tickerI = 0;
+let tickerT = null;
+let tickerI = 0;
 
 function startTicker() {
   const el = document.getElementById('loadingTicker');
-  tickerI = 0; el.textContent = TICKER_MSGS[0];
-  tickerT = setInterval(() => { tickerI = (tickerI+1) % TICKER_MSGS.length; el.textContent = TICKER_MSGS[tickerI]; }, 1800);
+  tickerI = 0;
+  el.textContent = TICKER_MSGS[0];
+  tickerT = setInterval(() => {
+    tickerI = (tickerI + 1) % TICKER_MSGS.length;
+    el.textContent = TICKER_MSGS[tickerI];
+  }, 1800);
 }
-function stopTicker() { if (tickerT) { clearInterval(tickerT); tickerT = null; } }
 
-// ─── DRAG & DROP ───────────────────────────────────────────────────────────
-let dragSrc = null;
+function stopTicker() {
+  if (tickerT) {
+    clearInterval(tickerT);
+    tickerT = null;
+  }
+}
 
 function renderAisles() {
   const list = document.getElementById('aisleList');
+  const hint = document.getElementById('touchHint');
   list.innerHTML = '';
-  if ('ontouchstart' in window) document.getElementById('touchHint').style.display = 'block';
+
+  hint.style.display = isMobileLayout() ? 'block' : 'none';
 
   ranking.forEach((aisle, idx) => {
     const li = document.createElement('li');
     li.className = 'aisle-item';
-    li.draggable = true;
     li.dataset.id = aisle.id;
+    li.draggable = !isMobileLayout();
+
     li.innerHTML = `
-      <div class="aisle-rank">${idx+1}</div>
+      <div class="aisle-rank">${idx + 1}</div>
       <div class="aisle-content">
         <div class="aisle-name">${aisle.name}</div>
         <div class="aisle-desc">${aisle.desc}</div>
       </div>
-      <div class="aisle-handle"><span></span><span></span><span></span></div>
+      ${isMobileLayout() ? `
+        <div class="mobile-reorder">
+          <button type="button" aria-label="Move ${aisle.name} up" ${idx === 0 ? 'disabled' : ''} data-move="up">▲</button>
+          <button type="button" aria-label="Move ${aisle.name} down" ${idx === ranking.length - 1 ? 'disabled' : ''} data-move="down">▼</button>
+        </div>
+      ` : `
+        <div class="aisle-handle"><span></span><span></span><span></span></div>
+      `}
     `;
-    li.addEventListener('dragstart', e => { dragSrc = li; li.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; });
-    li.addEventListener('dragend', () => { li.classList.remove('dragging'); document.querySelectorAll('.aisle-item').forEach(i => i.classList.remove('drag-over')); });
-    li.addEventListener('dragover', e => { e.preventDefault(); document.querySelectorAll('.aisle-item').forEach(i => i.classList.remove('drag-over')); if (li !== dragSrc) li.classList.add('drag-over'); });
-    li.addEventListener('drop', e => {
-      e.preventDefault();
-      if (dragSrc && dragSrc !== li) {
-        const si = ranking.findIndex(a => a.id === dragSrc.dataset.id);
-        const di = ranking.findIndex(a => a.id === li.dataset.id);
-        const [m] = ranking.splice(si,1);
-        ranking.splice(di,0,m);
-        renderAisles();
+
+    if (!isMobileLayout()) {
+      li.addEventListener('dragstart', e => {
+        dragSrc = li;
+        li.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+      });
+
+      li.addEventListener('dragend', () => {
+        li.classList.remove('dragging');
+        document.querySelectorAll('.aisle-item').forEach(i => i.classList.remove('drag-over'));
+      });
+
+      li.addEventListener('dragover', e => {
+        e.preventDefault();
+        document.querySelectorAll('.aisle-item').forEach(i => i.classList.remove('drag-over'));
+        if (li !== dragSrc) li.classList.add('drag-over');
+      });
+
+      li.addEventListener('drop', e => {
+        e.preventDefault();
+        if (dragSrc && dragSrc !== li) {
+          const si = ranking.findIndex(a => a.id === dragSrc.dataset.id);
+          const di = ranking.findIndex(a => a.id === li.dataset.id);
+          const [m] = ranking.splice(si, 1);
+          ranking.splice(di, 0, m);
+          renderAisles();
+        }
+      });
+    } else {
+      const upBtn = li.querySelector('[data-move="up"]');
+      const downBtn = li.querySelector('[data-move="down"]');
+
+      if (upBtn) {
+        upBtn.addEventListener('click', () => moveAisle(idx, idx - 1));
       }
-    });
-    setupTouch(li);
+      if (downBtn) {
+        downBtn.addEventListener('click', () => moveAisle(idx, idx + 1));
+      }
+    }
+
     list.appendChild(li);
   });
 }
 
-function setupTouch(el) {
-  let startY, clone;
-  el.addEventListener('touchstart', e => {
-    startY = e.touches[0].clientY;
-    clone = el.cloneNode(true);
-    clone.style.cssText = `position:fixed;left:0;right:0;opacity:0.85;z-index:9999;pointer-events:none;background:var(--yellow);top:${el.getBoundingClientRect().top}px;`;
-    document.body.appendChild(clone);
-    el.classList.add('dragging');
-  }, { passive: true });
-  el.addEventListener('touchmove', e => {
-    e.preventDefault();
-    if (clone) clone.style.top = (el.getBoundingClientRect().top + e.touches[0].clientY - startY) + 'px';
-    const items = [...document.querySelectorAll('.aisle-item')];
-    items.forEach(i => i.classList.remove('drag-over'));
-    const t = items.find(i => { const r = i.getBoundingClientRect(); return e.touches[0].clientY >= r.top && e.touches[0].clientY <= r.bottom && i !== el; });
-    if (t) t.classList.add('drag-over');
-  }, { passive: false });
-  el.addEventListener('touchend', e => {
-    if (clone) { clone.remove(); clone = null; }
-    el.classList.remove('dragging');
-    document.querySelectorAll('.aisle-item').forEach(i => i.classList.remove('drag-over'));
-    const touch = e.changedTouches[0];
-    const items = [...document.querySelectorAll('.aisle-item')];
-    const t = items.find(i => { const r = i.getBoundingClientRect(); return touch.clientY >= r.top && touch.clientY <= r.bottom && i !== el; });
-    if (t) {
-      const si = ranking.findIndex(a => a.id === el.dataset.id);
-      const di = ranking.findIndex(a => a.id === t.dataset.id);
-      const [m] = ranking.splice(si,1);
-      ranking.splice(di,0,m);
-      renderAisles();
-    }
-  });
+function moveAisle(fromIndex, toIndex) {
+  if (toIndex < 0 || toIndex >= ranking.length) return;
+  const [moved] = ranking.splice(fromIndex, 1);
+  ranking.splice(toIndex, 0, moved);
+  renderAisles();
 }
 
-// ─── SCORING ───────────────────────────────────────────────────────────────
 function computeScores(rankedAisles) {
   const parties = Object.keys(PARTY_COLOURS);
   const scores = {};
@@ -617,14 +716,16 @@ function computeScores(rankedAisles) {
 
 function normaliseScores(scores) {
   const vals = Object.values(scores);
-  const min = Math.min(...vals), max = Math.max(...vals);
+  const min = Math.min(...vals);
+  const max = Math.max(...vals);
   const range = max - min || 1;
   const out = {};
-  Object.keys(scores).forEach(p => { out[p] = Math.round(((scores[p] - min) / range) * 100); });
+  Object.keys(scores).forEach(p => {
+    out[p] = Math.round(((scores[p] - min) / range) * 100);
+  });
   return out;
 }
 
-// Map EC party name string to our scoring key
 function mapParty(rawName) {
   const n = (rawName || '').toLowerCase();
   if (n.includes('labour')) return 'Labour';
@@ -637,7 +738,6 @@ function mapParty(rawName) {
   return 'Other';
 }
 
-// Pull all non-cancelled ballots out of EC response, grouped by ballot
 function extractBallots(data) {
   if (!data || !data.dates) return [];
   const ballots = [];
@@ -663,21 +763,22 @@ function extractBallots(data) {
   return ballots;
 }
 
-// Pick winner: prefer parties with actual local candidates, then highest score
 function pickWinner(scores, ballots) {
   if (ballots.length > 0) {
     const localParties = [...new Set(ballots.flatMap(b => b.candidates.map(c => c.partyKey)))];
-    let best = null, bestScore = -Infinity;
+    let best = null;
+    let bestScore = -Infinity;
     localParties.forEach(p => {
-      if ((scores[p] ?? 0) > bestScore) { bestScore = scores[p]; best = p; }
+      if ((scores[p] ?? 0) > bestScore) {
+        bestScore = scores[p];
+        best = p;
+      }
     });
     if (best) return best;
   }
-  // Fallback: overall highest
-  return Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  return Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
 }
 
-// ─── SUBMIT ────────────────────────────────────────────────────────────────
 function submitRanking() {
   goTo(4);
   startTicker();
@@ -692,53 +793,48 @@ function submitRanking() {
   }, 700);
 }
 
-// ─── RENDER RESULT ─────────────────────────────────────────────────────────
 function renderResult(scores, normed, winner, ballots) {
   const top = ranking[0];
-  const bottom = ranking[ranking.length-1];
+  const bottom = ranking[ranking.length - 1];
   const colour = PARTY_COLOURS[winner] || '#888';
 
-  // Receipt items + score bars
   document.getElementById('receiptItems').innerHTML = `
     <div class="receipt-line"><span class="receipt-label">POSTCODE</span><span class="receipt-value">${postcode}</span></div>
     <div class="receipt-line"><span class="receipt-label">MOST LOVED AISLE</span><span class="receipt-value">${top.name.toUpperCase()}</span></div>
     <div class="receipt-line"><span class="receipt-label">LEAST LOVED AISLE</span><span class="receipt-value">${bottom.name.toUpperCase()}</span></div>
     <hr class="receipt-divider">
-    ${ranking.map((a,i) => `<div class="receipt-line"><span class="receipt-label">${i+1}. ${a.name}</span><span class="receipt-value" style="font-size:10px;letter-spacing:0.05em;">${'▓'.repeat(3-Math.min(2,Math.floor(i*3/ranking.length)))}${'░'.repeat(Math.min(2,Math.floor(i*3/ranking.length)))}</span></div>`).join('')}
+    ${ranking.map((a, i) => `<div class="receipt-line"><span class="receipt-label">${i + 1}. ${a.name}</span><span class="receipt-value" style="font-size:10px;letter-spacing:0.05em;">${'▓'.repeat(3 - Math.min(2, Math.floor(i * 3 / ranking.length)))}${'░'.repeat(Math.min(2, Math.floor(i * 3 / ranking.length)))}</span></div>`).join('')}
     <hr class="receipt-divider">
     <div style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:0.15em;color:#aaa;text-transform:uppercase;margin-bottom:8px;">Party Affinity Index</div>
     <div class="score-bars">
-      ${Object.entries(normed).sort((a,b)=>b[1]-a[1]).map(([p,v]) =>
+      ${Object.entries(normed).sort((a, b) => b[1] - a[1]).map(([p, v]) =>
         `<div class="score-bar-row">
           <div class="score-bar-label">${p}</div>
-          <div class="score-bar-track"><div class="score-bar-fill" style="width:${v}%;background:${PARTY_COLOURS[p]||'#888'}"></div></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:${v}%;background:${PARTY_COLOURS[p] || '#888'}"></div></div>
           <div class="score-bar-val">${v}</div>
         </div>`
       ).join('')}
     </div>
   `;
 
-  // Verdict
   document.getElementById('verdictBlock').innerHTML = `
     <div class="verdict-label">YOUR RECOMMENDED VOTE</div>
     <div class="verdict-party" style="color:${colour}">${winner}</div>
     <div class="verdict-why">${ballots.some(b => b.candidates.length > 0) ? 'Matched against actual candidates standing in your area.' : ballots.length > 0 ? 'Based on aisle scores — candidate lists not yet published for your area.' : 'Based on aisle scores alone — no local ballot data available.'}</div>
   `;
 
-  // Analysis
   document.getElementById('analysisBlock').innerHTML = `
     <h3>The Analysis</h3>
     <p>${top.quip} Your avoidance of <strong>${bottom.name}</strong> tells its own story. ${PARTY_LINES[winner] || ''}</p>
   `;
 
-  // Candidates by ballot
   const cb = document.getElementById('candidatesBlock');
   if (ballots.length > 0) {
     cb.innerHTML = `
       <h3>Your Local Ballot${ballots.length > 1 ? 's' : ''}</h3>
       ${ballots.map(b => `
         <div class="ballot-group">
-          <div class="ballot-title-label">${b.title} · ${new Date(b.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
+          <div class="ballot-title-label">${b.title} · ${new Date(b.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
           <div style="font-size:11px;color:#aaa;margin-bottom:6px;">
             ${b.role} · ${b.seatsContested} seat${b.seatsContested !== 1 ? 's' : ''}
             ${b.requiresVoterId ? ' · <span style="color:#c00;font-weight:700;">Photo ID required</span>' : ''}
@@ -751,7 +847,7 @@ function renderResult(scores, normed, winner, ballots) {
                     <span class="candidate-name${isWinner ? ' candidate-highlight' : ''}">${c.name}${isWinner ? ' ←' : ''}</span>
                     <div style="font-size:11px;color:#999;">${b.role}</div>
                   </div>
-                  <span class="candidate-party-pill" style="color:${PARTY_COLOURS[c.partyKey]||'#888'};border-color:${PARTY_COLOURS[c.partyKey]||'#888'}">${c.partyRaw}</span>
+                  <span class="candidate-party-pill" style="color:${PARTY_COLOURS[c.partyKey] || '#888'};border-color:${PARTY_COLOURS[c.partyKey] || '#888'}">${c.partyRaw}</span>
                 </div>`;
               }).join('')
             : `<p style="font-size:12px;color:#999;padding:6px 0;margin:0;">Candidate list not yet published. Check <a href="https://whocanivotefor.co.uk" target="_blank" style="color:var(--red)">whocanivotefor.co.uk</a> nearer the election.</p>`
@@ -762,7 +858,7 @@ function renderResult(scores, normed, winner, ballots) {
   } else {
     cb.innerHTML = `
       <h3>Local Candidates</h3>
-      <p style="font-size:13px;color:#777;padding:8px 0;">No upcoming ballot data found for <strong>${postcode}</strong>. There may not be elections in your area in May, or the data isn't yet available.<br><br>Check <a href="https://whocanivotefor.co.uk" target="_blank" style="color:var(--red)">whocanivotefor.co.uk</a> for candidates in your area.</p>
+      <p style="font-size:13px;color:#777;padding:8px 0;">No upcoming ballot data found for <strong>${postcode}</strong>. There may not be elections in your area in May, or the data is not yet available.<br><br>Check <a href="https://whocanivotefor.co.uk" target="_blank" style="color:var(--red)">whocanivotefor.co.uk</a> for candidates in your area.</p>
     `;
   }
 }
